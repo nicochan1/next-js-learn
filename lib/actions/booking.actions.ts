@@ -35,3 +35,17 @@ export const createBooking = async (eventId: string, email: string) => {
     }
   }
 }
+
+export const checkBooking = async(eventID: string) =>{
+  try{
+    console.log("EventID: ", eventID)
+    await connectDB()
+    const bookingCount = await Booking.countDocuments({eventId:eventID})
+
+    console.log("booking: ",bookingCount)
+    return bookingCount 
+  }catch{
+    return 0
+  }
+
+}

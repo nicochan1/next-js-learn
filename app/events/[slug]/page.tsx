@@ -5,6 +5,7 @@ import BookEvent from "@/components/BookEvent";
 import { IEvent } from "@/database";
 import { getSimilarEventsBySlug } from "@/lib/actions/event.actions";
 import { EventCard } from "@/components/EventCard";
+import { checkBooking } from "@/lib/actions/booking.actions";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 
@@ -39,7 +40,7 @@ const EventDetailsPage = async({params}: {params: Promise<{ slug: string}>}) => 
 
   if(!description) return notFound()
 
-  const bookings = 10
+  const bookings:number = await checkBooking(_id)
 
   const similarEvents :IEvent[] = await getSimilarEventsBySlug(slug)
   console.log(similarEvents)
