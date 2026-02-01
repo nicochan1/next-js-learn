@@ -17,7 +17,7 @@ const page = async() => {
       <div className="mt-20 space-y-7">
         <h3>Feature Events</h3>
           <ul className="events" style={{listStyleType: "none"}} >
-              {events.map((event: { title: string })=>{
+              {events.map((event: { title: string; image: string; slug: string; location: string; date: string; time: string })=>{
                 return(
                 <li key={event.title} >
                   <EventCard {...event}></EventCard>
